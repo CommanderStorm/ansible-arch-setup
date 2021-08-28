@@ -1,0 +1,5 @@
+- name: install JetBrains Toolbox
+  community.general.pacman:
+   name: 
+    - jetbrains-toolbox
+   state: present 

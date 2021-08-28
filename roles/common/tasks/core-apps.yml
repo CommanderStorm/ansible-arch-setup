@@ -1,6 +1,8 @@
 - name: install basic utils, shells, apps
   community.general.pacman:
    name:
+    - tldr
+    - neofetch
     - xorg
     - kitty
     - vlc
@@ -14,6 +16,24 @@
     - tree
     - base-devel
    state: present
+
+# configure git
+- git_config:
+  name: alias.st
+  scope: global
+  value: status
+- git_config:
+  name: color.ui
+  scope: global
+  value: auto
+- git_config:    
+  name: user.name
+  scope: global
+  value: "Frank Elsinga"
+- git_config:    
+  name: user.email
+  scope: global
+  value: "frank@elsinga.de"
 
 - name: Install archival utils
   pacman:
@@ -37,7 +57,14 @@
       - wget
     state: present
 
-- name: Install ImageMagick
+- name: Install creative Apps
   pacman:
-    name: imagemagick
+    name:
+      - imagemagick
+      - blender
     state: present
+
+- name: Uninstall unwanted Programms
+  pacman:
+    name: thunderbird
+    state: absent

@@ -1,5 +1,5 @@
-- name: install Brave
+- name: install Bitwarden
   community.general.pacman:
    name: 
-    - brave
+    - bitwarden
    state: present 

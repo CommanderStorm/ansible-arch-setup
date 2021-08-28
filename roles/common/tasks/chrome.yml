@@ -1,0 +1,5 @@
+- name: install Chrome
+  yay:
+   name: 
+    - google-chrome
+   state: latest
