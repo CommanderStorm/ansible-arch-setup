@@ -1,3 +1,4 @@
+# bootstraping
 - name: check for pacman updates
   pacman:
     update_cache: yes
@@ -7,9 +8,16 @@
   pacman:
     name: yay
     state: present
-
 - include: pamac.yml
+
+# install all programms and configure them
 - name: Run installation scripts
   include: "{{ item }}"
   with_fileglob:
-    - all/*.yml
+    - programms/*.yml
+
+# configure the system
+- name: Run system configuration skripts
+  include: "{{ item }}"
+  with_fileglob:
+    - system_configureation/*.yml
