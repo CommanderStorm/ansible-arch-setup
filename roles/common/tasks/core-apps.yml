@@ -15,6 +15,7 @@
     - source-highlight
     - tree
     - base-devel
+    - terminus
    state: present
 
 # configure git
