@@ -2,4 +2,4 @@
   community.general.pacman:
    name: 
     - bitwarden
-   state: present 
+   state: latest 

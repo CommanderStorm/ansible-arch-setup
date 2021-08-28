@@ -15,26 +15,24 @@
     - source-highlight
     - tree
     - base-devel
-    - terminus
-   state: present
+   state: latest
 
 # configure git
-- git_config:
-  name: alias.st
-  scope: global
-  value: status
-- git_config:
-  name: color.ui
-  scope: global
-  value: auto
-- git_config:    
-  name: user.name
-  scope: global
-  value: "Frank Elsinga"
-- git_config:    
-  name: user.email
-  scope: global
-  value: "frank@elsinga.de"
+- name: Configure the global git color usage
+  git_config:
+    name: color.ui
+    scope: global
+    value: auto
+- name: Configure the global git username
+  git_config:    
+    name: user.name
+    scope: global
+    value: "Frank Elsinga"
+- name: Configure the global git useremail
+  git_config:    
+    name: user.email
+    scope: global
+    value: "frank@elsinga.de"
 
 - name: Install archival utils
   pacman:
@@ -48,7 +46,7 @@
       - bzip2
       - gzip
       - tar
-    state: present
+    state: latest
 
 - name: Install download utils
   pacman:
@@ -56,14 +54,14 @@
       - aria2
       - curl
       - wget
-    state: present
+    state: latest
 
 - name: Install creative Apps
   pacman:
     name:
       - imagemagick
       - blender
-    state: present
+    state: latest
 
 - name: Uninstall unwanted Programms
   pacman:

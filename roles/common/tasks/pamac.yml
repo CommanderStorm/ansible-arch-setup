@@ -1,0 +1,29 @@
+---
+- name: ensure pamac is installed
+  pacman:
+    name: pamac
+    state: present
+
+- name: ensure settings in the pamac_conf_file are correct
+  replace:    
+    path: "{{ pamac_conf_file }}"
+    regexp: "{{ item.regexp }}"
+    replace: "{{ item.replace }}"
+  loop:
+    - { regexp: '^#RemoveUnrequiredDeps$', replace: 'RemoveUnrequiredDeps' }
+    - { regexp: '^#RefreshPeriod = [0-9]+$', replace: 'RefreshPeriod = 3' }
+    - { regexp: '^#NoUpdateHideIcon$', replace: 'NoUpdateHideIcon' }
+    - { regexp: '^EnableDowngrade$', replace: '#EnableDowngrade' }
+    - { regexp: '^SimpleInstall$', replace: '#SimpleInstall' }
+    - { regexp: '^#EnableAUR$', replace: 'EnableAUR' }
+    - { regexp: '^#KeepBuiltPkgs$', replace: 'KeepBuiltPkgs' }
+    - { regexp: '^#CheckAURUpdates$', replace: 'CheckAURUpdates' }
+    - { regexp: '^#CheckAURVCSUpdates$', replace: 'CheckAURVCSUpdates' }
+    - { regexp: '^#BuildDirectory = .+$', replace: 'BuildDirectory = /var/tmp' }
+    - { regexp: '^#KeepNumPackages = [0-9]+$', replace: 'KeepNumPackages = 2' }
+    - { regexp: '^OnlyRmUninstalled$', replace: '#OnlyRmUninstalled' }
+    - { regexp: '^#DownloadUpdates$', replace: 'DownloadUpdates' }
+    - { regexp: '^#MaxParallelDownloads = [0-9]+$', replace: 'MaxParallelDownloads = 10' }
+    - { regexp: '^#CheckFlatpakUpdates$', replace: 'CheckFlatpakUpdates' }
+    - { regexp: '^#EnableSnap$', replace: 'EnableSnap' }
+    - { regexp: '^#EnableFlatpak$', replace: 'EnableFlatpak' }

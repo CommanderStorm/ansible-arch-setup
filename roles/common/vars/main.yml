@@ -4,7 +4,7 @@ dotfiles:
     url: https://github.com/CommanderStorm/dotfiles.git
     destination: dev/setup/dotfiles
     rcup_flags: -fx README.md
-
+pamac_conf_file: /etc/pamac.conf
 ## AUR vars
 ## ===========================
 aur:

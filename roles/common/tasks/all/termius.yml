@@ -1,0 +1,3 @@
+- name: install Terminus
+  ansible.builtin.command:
+   cmd: pamac install termius --no-confirm

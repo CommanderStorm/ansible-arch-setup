@@ -6,4 +6,4 @@
     - sddm-kcm
     - clementine
     - audacious
-   state: present
+   state: latest

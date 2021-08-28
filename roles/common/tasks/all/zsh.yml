@@ -6,13 +6,13 @@
     - zsh
     - zsh-completions
     - zsh-syntax-highlighting
-   state: present
+   state: latest
 
 - name: install fzf for zsh
   community.general.pacman:
    name: 
     - fzf
-   state: present
+   state: latest
 
 
 - name: change "{{ username }}"'s shell to zsh

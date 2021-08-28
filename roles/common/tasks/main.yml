@@ -1,7 +1,15 @@
-- name: check updates
-  pacman: 
-   update_cache: yes
-   upgrade: yes
-  yum
+- name: check for pacman updates
+  pacman:
+    update_cache: yes
+    upgrade: yes
 
-- include: *.yml
+- name: Install yay
+  pacman:
+    name: yay
+    state: present
+
+- include: pamac.yml
+- name: Run installation scripts
+  include: "{{ item }}"
+  with_fileglob:
+    - all/*.yml

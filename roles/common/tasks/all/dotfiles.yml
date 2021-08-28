@@ -1,3 +1,8 @@
+
+- name: Install rcm for dotfiles management
+  ansible.builtin.command:
+    cmd: pamac install rcm --no-confirm
+
 - name: Clone user dotfiles
   git: repo={{ dotfiles.url }} dest=/home/{{ username }}/{{ dotfiles.destination }} accept_hostkey=yes update=no
   become: yes
