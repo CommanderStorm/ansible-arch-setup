@@ -1,8 +1,10 @@
 - name: Enable pacman colourised output and verbose package lists
   replace:
     path: /etc/pacman.conf
-    regexp: "{{ item.regexp }}"
-    replace: "{{ item.replace }}"
+    regexp: "{{ replace_var.regexp }}"
+    replace: "{{ replace_var.replace }}"
+  loop_control:
+    loop_var: replace_var
   loop:
     - { regexp: '^#Color$', replace: 'Color' }
     - { regexp: '^#VerbosePkgLists$', replace: 'VerbosePkgLists' }
@@ -10,8 +12,10 @@
 - name: Enable repositories
   replace:
     path: /etc/pacman.conf
-    regexp: '^#\[{{ item }}\]$\n^#Include\s+=\s+/etc/pacman.d/mirrorlist$'
-    replace: '[{{ item }}]\nInclude = /etc/pacman.d/mirrorlist'
+    regexp: '^#\[{{ repo }}\]$\n^#Include\s+=\s+/etc/pacman.d/mirrorlist$'
+    replace: '[{{ repo }}]\nInclude = /etc/pacman.d/mirrorlist'
+  loop_control:
+    loop_var: repo
   loop: '{{ pacman.repos }}'
   notify: Update pacman cache
   when: 'pacman.repos is defined'

@@ -2,7 +2,7 @@
 - name: ensure pamac is installed
   pacman:
     name: pamac
-    state: present
+    state: latest
 
 - name: ensure settings in the pamac_conf_file are correct
   replace:    

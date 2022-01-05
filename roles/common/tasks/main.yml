@@ -4,20 +4,40 @@
     update_cache: yes
     upgrade: yes
 
-- name: Install yay
-  pacman:
-    name: yay
-    state: present
-- include: pamac.yml
-
-# install all programms and configure them
-- name: Run installation scripts
-  include: "{{ item }}"
+# install and configure all needed package-managers
+- name: Run package-manager skripts
+  ansible.builtin.include_tasks: "{{ package_manager }}"
+  loop_control:
+    loop_var: package_manager
   with_fileglob:
-    - programms/*.yml
+    - package_managers/*.yml
 
 # configure the system
 - name: Run system configuration skripts
-  include: "{{ item }}"
+  ansible.builtin.include_tasks: "{{ sys_conf }}"
+  loop_control:
+    loop_var: sys_conf
   with_fileglob:
     - system_configureation/*.yml
+
+# install all programms and configure them
+- name: Run system programm scripts
+  ansible.builtin.include_tasks: "{{ programm }}"
+  loop_control:
+    loop_var: programm
+  with_fileglob:
+    - programms/system/*.yml
+    
+- name: Run core programm scripts
+  ansible.builtin.include_tasks: "{{ programm }}"
+  loop_control:
+    loop_var: programm
+  with_fileglob:
+    - programms/core/*.yml
+    
+- name: Run dev programm scripts
+  ansible.builtin.include_tasks: "{{ programm }}"
+  loop_control:
+    loop_var: programm
+  with_fileglob:
+    - programms/dev/*.yml
