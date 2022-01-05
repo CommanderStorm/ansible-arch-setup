@@ -1,0 +1,2 @@
+roles/common/files/user_home/.ssh/id_*
+roles/common/files/secrets/*
