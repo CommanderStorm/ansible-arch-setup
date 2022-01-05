@@ -1,0 +1,17 @@
+- name: uninstall firefox
+  community.general.pacman:
+   name:
+    - firefox
+   state: absent
+
+- name: install firefox-developer-edition
+  community.general.pacman:
+   name:
+    - firefox-developer-edition
+   state: latest
+
+- name: install Chrome
+  yay:
+   name: 
+    - google-chrome
+   state: latest

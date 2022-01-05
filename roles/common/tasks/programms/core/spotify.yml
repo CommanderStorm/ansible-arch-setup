@@ -1,0 +1,5 @@
+- name: install spotify
+  yay:
+   name: 
+    - spotify
+   state: latest
