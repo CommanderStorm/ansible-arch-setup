@@ -1,0 +1,35 @@
+# configure sudo-global
+- name: Configure the sudo-global git color usage
+  community.general.git_config:
+    name: color.ui
+    scope: global
+    value: auto
+- name: Configure the sudo-global git username
+  community.general.git_config:    
+    name: user.name
+    scope: global
+    value: "Frank Elsinga"
+- name: Configure the sudo-global git useremail
+  community.general.git_config:    
+    name: user.email
+    scope: global
+    value: "frank@elsinga.de"
+# configure sudo-global
+- name: Configure the sudo-global git color usage
+  community.general.git_config:
+    name: color.ui
+    scope: file
+    file: /home/{{ username }}/.gitconfig
+    value: auto
+- name: Configure the sudo-global git username
+  community.general.git_config:    
+    name: user.name
+    scope: file
+    file: /home/{{ username }}/.gitconfig
+    value: "Frank Elsinga"
+- name: Configure the sudo-global git useremail
+  community.general.git_config:    
+    name: user.email
+    scope: file
+    file: /home/{{ username }}/.gitconfig
+    value: "frank@elsinga.de"
