@@ -1,3 +1,0 @@
-- name: install JetBrains Toolbox
-  ansible.builtin.command:
-   cmd: pamac install jetbrains-toolbox --no-confirm

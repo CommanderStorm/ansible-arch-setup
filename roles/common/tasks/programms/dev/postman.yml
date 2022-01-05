@@ -1,0 +1,5 @@
+- name: install postman
+  yay:
+   name: 
+    - postman-bin
+   state: latest

@@ -1,0 +1,5 @@
+- name: install Terminus
+  yay:
+   name: 
+    - termius
+   state: latest

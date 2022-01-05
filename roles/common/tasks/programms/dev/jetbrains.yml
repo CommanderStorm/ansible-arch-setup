@@ -1,0 +1,5 @@
+- name: install JetBrains Toolbox
+  yay:
+   name: 
+    - jetbrains-toolbox
+   state: latest
