@@ -17,23 +17,6 @@
     - base-devel
    state: latest
 
-# configure git
-- name: Configure the global git color usage
-  git_config:
-    name: color.ui
-    scope: global
-    value: auto
-- name: Configure the global git username
-  git_config:    
-    name: user.name
-    scope: global
-    value: "Frank Elsinga"
-- name: Configure the global git useremail
-  git_config:    
-    name: user.email
-    scope: global
-    value: "frank@elsinga.de"
-
 - name: Install archival utils
   pacman:
     name:
@@ -63,7 +46,9 @@
       - blender
     state: latest
 
-- name: Uninstall unwanted Programms
-  pacman:
-    name: thunderbird
-    state: absent
+# uninstall 
+- name: uninstall unwanted programms (kde games)
+  community.general.pacman:
+   name:
+    - kde-meta-kdegames
+   state: absent
