@@ -1,0 +1,17 @@
+# set profile picture
+- name: Copy file with owner and permissions
+  ansible.builtin.copy:
+    src: ../../../../staticfiles/logos/profilbild.jpg
+    dest: /home/{{ username }}/.face.icon
+    owner: "{{ username }}"
+    group: "{{ username }}"
+    mode: '0644'
+
+# set profile picture
+- name: Copy file with owner and permissions
+  ansible.builtin.copy:
+    src: ../../../../staticfiles/logos/profilbild.jpg
+    dest: /home/{{ username }}/.face
+    owner: "{{ username }}"
+    group: "{{ username }}"
+    mode: '0644'
