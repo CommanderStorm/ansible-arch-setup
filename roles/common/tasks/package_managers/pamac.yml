@@ -27,3 +27,5 @@
     - { regexp: '^#CheckFlatpakUpdates$', replace: 'CheckFlatpakUpdates' }
     - { regexp: '^#EnableSnap$', replace: 'EnableSnap' }
     - { regexp: '^#EnableFlatpak$', replace: 'EnableFlatpak' }
+  async: 60
+  poll: 0
