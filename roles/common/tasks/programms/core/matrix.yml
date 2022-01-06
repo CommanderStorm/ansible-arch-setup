@@ -1,0 +1,5 @@
+- name: install Element matrix client
+  community.general.pacman:
+   name: 
+    - element-desktop
+   state: latest 
