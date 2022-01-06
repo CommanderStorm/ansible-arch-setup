@@ -1,0 +1,5 @@
+- name: install Telegram
+  community.general.pacman:
+   name: 
+    - telegram-desktop
+   state: latest 
