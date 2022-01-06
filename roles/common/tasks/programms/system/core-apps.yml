@@ -45,10 +45,3 @@
       - imagemagick
       - blender
     state: latest
-
-# uninstall 
-- name: uninstall unwanted programms (kde games)
-  community.general.pacman:
-   name:
-    - kde-meta-kdegames
-   state: absent

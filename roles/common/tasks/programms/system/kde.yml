@@ -1,7 +1,53 @@
-- name: install KDE and KDE apps
+# uninstall 
+- name: we want to ununstall education and games all programms 
+  community.general.pacman:
+   name:
+    - kde-applications-meta
+   state: absent
+
+
+# games stuff
+- name: uninstall unwanted programms from kde games
+  community.general.pacman:
+   name:
+    - kde-games-meta
+   state: absent
+   extra_args: --recursive
+
+# edu stuff
+- name: Install educational Apps
+  pacman:
+    name:
+      - ktouch
+    state: latest
+- name: uninstall unwanted programms from kde education
+  community.general.pacman:
+   name:
+    - kde-education-meta
+   state: absent
+   extra_args: --recursive
+
+# install
+
+- name: install KDE and KDE meta groups
+  community.general.pacman:
+   name: 
+    - kde-accessibility-meta
+    #- kde-education-meta
+    #- kde-games-meta
+    - kde-graphics-meta
+    - kde-multimedia-meta
+    - kde-network-meta
+    - kde-pim-meta
+    - kde-sdk-meta
+    - kde-system-meta
+    - kde-utilities-meta
+    - kdevelop-meta
+   state: latest
+
+- name: install system-management apps
   community.general.pacman:
    name: 
     - plasma-meta
-    - kde-applications-meta
     - sddm-kcm
    state: latest
