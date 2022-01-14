@@ -1,0 +1,5 @@
+- name: install texlive-most (this may take up to 30m)
+  pacman:
+   name: 
+    - texlive-most
+   state: latest 
