@@ -6,8 +6,6 @@
     owner: "{{ username }}"
     group: "{{ username }}"
     mode: '0644'
-    async: 60
-    poll: 0
 
 # set profile picture
 - name: Copy file with owner and permissions
@@ -17,5 +15,3 @@
     owner: "{{ username }}"
     group: "{{ username }}"
     mode: '0644'
-    async: 60
-    poll: 0
