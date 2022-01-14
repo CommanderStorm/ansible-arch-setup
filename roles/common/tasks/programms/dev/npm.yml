@@ -1,0 +1,5 @@
+- name: install postman
+  yay:
+   name: 
+    - community/npm
+   state: latest
