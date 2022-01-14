@@ -1,0 +1,51 @@
+- name: create nessesary paths
+  file:
+    path: /home/{{ username }}/dev/{{ path_var }}
+    recurse: true
+    state: directory
+    group: "{{ username }}"
+    owner: "{{ username }}"
+  loop_control:
+    loop_var: path_var
+  loop:
+    - fs
+    - uni
+    - setup
+
+- name: clone git repos
+  ansible.builtin.shell:
+    cmd: |
+      git clone --config core.sshCommand="ssh -i /home/{{ username }}/.ssh/id_ed25519" git@{{ git_var.repo }}.git {{ git_var.dest }}
+    chdir: "/home/{{ username }}/dev/"
+    creates: "/home/{{ username }}/dev/{{ git_var.dest }}"
+  loop_control:
+    loop_var: git_var
+  loop:
+    - { repo: 'github.com:FSTUM/rallyetool-v2', dest: 'fs/rallyetool' }
+    - { repo: 'github.com:FSTUM/finanztool-v2', dest: 'fs/finanztool' }
+    - { repo: 'github.com:FSTUM/settool-v2', dest: 'fs/settool' }
+    - { repo: 'github.com:FSTUM/klopapiertool-v2', dest: 'fs/klopapiertool' }
+    - { repo: 'github.com:CommanderStorm/django-template', dest: 'django-template' }
+    - { repo: 'git.fs.tum.de:compref/adduser-web', dest: 'fs/adduser-web' }
+    - { repo: 'git.fs.tum.de:fsmpi/toptool', dest: 'fs/toptool' }
+
+
+- name: init venv in all python projects
+  ansible.builtin.shell:
+    cmd: |
+      python -m venv venv
+      ./venv/bin/python3 -m pip install --upgrade pip
+      ./venv/bin/python3 -m pip install -r requirements.txt
+      ./venv/bin/python3 -m pip install -r requirements_dev.txt
+    chdir: "/home/{{ username }}/dev/{{ git_dest }}/"
+    creates: "/home/{{ username }}/dev/{{ git_dest }}/venv"
+  loop_control:
+    loop_var: git_dest
+  loop:
+    - 'fs/rallyetool'
+    - 'fs/finanztool'
+    - 'fs/settool'
+    - 'fs/klopapiertool'
+    - 'django-template'
+    - 'fs/adduser-web'
+    - 'fs/toptool'
