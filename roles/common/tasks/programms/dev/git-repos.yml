@@ -25,9 +25,7 @@
     - { repo: 'github.com:FSTUM/finanztool-v2', dest: 'fs/finanztool' }
     - { repo: 'github.com:FSTUM/settool-v2', dest: 'fs/settool' }
     - { repo: 'github.com:FSTUM/klopapiertool-v2', dest: 'fs/klopapiertool' }
-    - { repo: 'github.com:CommanderStorm/django-template', dest: 'django-template' }
-    - { repo: 'git.fs.tum.de:compref/adduser-web', dest: 'fs/adduser-web' }
-    - { repo: 'git.fs.tum.de:fsmpi/toptool', dest: 'fs/toptool' }
+    - { repo: 'github.com:FSTUM/toptool-v3', dest: 'fs/toptool' }
 
 
 - name: init venv in all python projects
@@ -46,6 +44,4 @@
     - 'fs/finanztool'
     - 'fs/settool'
     - 'fs/klopapiertool'
-    - 'django-template'
-    - 'fs/adduser-web'
     - 'fs/toptool'
